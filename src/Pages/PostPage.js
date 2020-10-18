@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Post from '../Components/Post';
 import { useParams } from 'react-router-dom';
 
-const PostPage = () => {
-    const { id } = useParams();
+const useFetchPostByID = (id) => {
     const [post, setPosts] = useState([]);
 
     useEffect(() => {
@@ -17,6 +16,13 @@ const PostPage = () => {
             }
         })(id);
     }, [id]);
+
+    return post;
+}
+
+const PostPage = () => {
+    const { id } = useParams();
+    const post = useFetchPostByID(id);
     return (
         <>
             <h2>Post Page</h2>

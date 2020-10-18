@@ -3,10 +3,10 @@ import Post from '../Components/Post';
 import { Button } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 import routes from '../routes';
-const Home = () => {
 
+const useFetchPostsFromAPI = () => {
     const [posts, setPosts] = useState([]);
-    const history = useHistory();
+
     useEffect(() => {
         (async () => {
             try {
@@ -19,6 +19,12 @@ const Home = () => {
         })();
     }, [])
 
+    return posts;
+}
+
+const Home = () => {
+    const posts = useFetchPostsFromAPI();
+    const history = useHistory();
     return (
         <div className="container">
             <h2>Home!</h2>

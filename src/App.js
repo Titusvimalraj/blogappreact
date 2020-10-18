@@ -6,6 +6,7 @@ import Header from './Components/Header';
 import Home from './Pages/Home';
 import PostPage from './Pages/PostPage';
 import Authors from './Pages/Authors';
+import PageErrorBoundary from './ErrorBoundaries/PageErrorBoundary';
 
 function App() {
   return (
@@ -30,13 +31,17 @@ function App() {
           <h2>Posts Page</h2>
         </Route>
         <Route path={routes.post}>
-          <PostPage />
+
+
+          <PageErrorBoundary><PostPage /></PageErrorBoundary>
         </Route>
         <Route path={routes.authors}>
-          <Authors />
+          <PageErrorBoundary><Authors /></PageErrorBoundary>
+
         </Route>
         <Route path={routes.home}>
-          <Home />
+          <PageErrorBoundary><Home /></PageErrorBoundary>
+
         </Route>
       </Switch>
     </>
